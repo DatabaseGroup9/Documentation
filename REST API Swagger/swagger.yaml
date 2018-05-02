@@ -1,0 +1,178 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Gutenberg Geolocations server.  You can find out more about our project at [Final Semester Project](https://github.com/DatabaseGroup9/Gutenberg-Geolocation/wiki)"
+  version: "1.0.0"
+  title: "Gutenberg Geolocations"
+  termsOfService: "https://github.com/DatabaseGroup9/Gutenberg-Geolocation/wiki"
+  contact:
+    email: "cph@cphbusiness.dk"
+  license:
+    name: "Apache 2.0"
+    url: "https://github.com/DatabaseGroup9"
+host: "localhost"
+basePath: "/v2"
+tags:
+- name: "books"
+  description: "Get books including title and author"
+  externalDocs:
+    description: ""
+    url: "https://github.com/DatabaseGroup9"
+- name: "cities"
+  description: "Access to cities with geocoordianates mentioned in a book"
+  externalDocs:
+    description: ""
+    url: "https://github.com/DatabaseGroup9"
+schemes:
+- "http"
+paths:
+  /books/findByCity:
+    get:
+      tags:
+      - "books"
+      summary: "1) Given a city name your application returns all book titles with corresponding authors that mention this city."
+      description: "Only one city is allowed"
+      operationId: "findBooksByCityName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "city"
+        in: "query"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Book"
+        400:
+          description: "Invalid city value"
+  /books/findByAuthor:
+    get:
+      tags:
+      - "books"
+      summary: "3) Given an author name, your application lists all books written by that author and plots all cities mentioned in any of the books onto a map."
+      description: "Only one author is allowed"
+      operationId: "findBooksByAuthor"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "author"
+        in: "query"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Book"
+        400:
+          description: "Invalid author value"
+  /books/findByGeolocation:
+    get:
+      tags:
+      - "books"
+      summary: "4) Given a geolocation, your application lists all books mentioning a city in vicinity of the given geolocation."
+      description: "Only one author is allowed"
+      operationId: "findBooksByGeolocation"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "lon"
+        in: "query"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "string"
+      - name: "lat"
+        in: "query"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Book"
+        400:
+          description: "Invalid author value"
+  /cities/findByBookTitle:
+    get:
+      tags:
+      - "cities"
+      summary: "2) Given a book title, your application plots all cities mentioned in this book onto a map."
+      description: "Only one city is allowed"
+      operationId: "findCitiesByBookTitle"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "title"
+        in: "query"
+        description: "Full book title name"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/City"
+        400:
+          description: "Invalid book title value"
+definitions:
+  City:
+    type: "object"
+    required:
+    - "name"
+    - "lon"
+    - "lat"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        example: "Copenhagen"
+      lon:
+        type: "number"
+        format: "double"
+        example: 12.6
+      lat:
+        type: "number"
+        format: "double"
+        example: 12.6
+  Book:
+    type: "object"
+    required:
+    - "title"
+    - "author"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+        example: "Pride and Prejudice"
+      author:
+        type: "string"
+        example: "Jane Austen"
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "https://github.com/DatabaseGroup9/Gutenberg-Geolocation/wiki"
