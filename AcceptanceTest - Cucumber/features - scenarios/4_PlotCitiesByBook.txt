@@ -1,0 +1,17 @@
+//CUCUMBER SAMPLE - for Automated Acceptance Tests (Plain text file)
+
+Feature: Plot cities by any of the books written by a certain author - in relation to User Story #3
+	As a user
+	I want to see the all the cities mentioned in any of the books returned from my author search
+	so that I have an overview of all the cities mentioned in the book that I selected
+
+	Scenario: Select a book
+	Given The Three Masketeers
+	When Some cities found
+	Then Plot the cities
+	
+	Examples:
+		| 	Book Title	  	   | 		cities 			|		Page		 	 		|
+		| The Three Masketeers | Toledo, Madrid, .. 	| Success Page	- plot cities	|
+
+	

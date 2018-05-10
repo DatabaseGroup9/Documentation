@@ -1,0 +1,23 @@
+//CUCUMBER SAMPLE - for Automated Acceptance Tests (Plain text file)
+
+Feature: Search Books by Author Name
+	As a user
+	I want to search books by entering author name
+	so that I have an overview of all the books written by a certain author
+
+	Scenario: Valid Author Name
+	Given Alexandre Dumas
+	When Some books found
+	Then Display books
+	
+	Scenario: Author Not Found
+	Given The Great Author of all times
+	When No book found in the database
+	Then Display Error Page Book Not Found - No such book in the collection/Invalid Author
+	
+	Examples:
+		| 	Author Name	  				  | 		Books 								|		Page		 	 		|
+		| Alexandre Dumas 				  | The Three Masketeers, The Nutcracker, ..  	| Success Page	- plot cities	|
+		| The Great Author of all times	  | Null										| Error Page - Not found 		|
+
+	
