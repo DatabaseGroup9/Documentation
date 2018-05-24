@@ -31,6 +31,14 @@
         "description": "",
         "url": "https://github.com/DatabaseGroup9"
       }
+    },
+    {
+      "name": "bookWithCities",
+      "description": "Get books including title,author and cities mentioned in the book",
+      "externalDocs": {
+        "description": "",
+        "url": "https://github.com/DatabaseGroup9"
+      }
     }
   ],
   "schemes": [
@@ -50,7 +58,7 @@
         ],
         "parameters": [
           {
-            "name": "city",
+            "name": "cityName",
             "in": "query",
             "description": "Status values that need to be considered for filter",
             "required": true,
@@ -76,7 +84,7 @@
     "/books/findByAuthor": {
       "get": {
         "tags": [
-          "books"
+          "bookWithCities"
         ],
         "summary": "3) Given an author name, your application lists all books written by that author and plots all cities mentioned in any of the books onto a map.",
         "description": "Only one author is allowed",
@@ -86,7 +94,7 @@
         ],
         "parameters": [
           {
-            "name": "author",
+            "name": "authorFullName",
             "in": "query",
             "description": "Status values that need to be considered for filter",
             "required": true,
@@ -99,7 +107,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Book"
+                "$ref": "#/definitions/BookWithCities"
               }
             }
           },
@@ -142,7 +150,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Book"
+                "$ref": "#/definitions/BookWithCities"
               }
             }
           },
@@ -165,7 +173,7 @@
         ],
         "parameters": [
           {
-            "name": "title",
+            "name": "bookTitle",
             "in": "query",
             "description": "Full book title name",
             "required": true,
@@ -190,6 +198,41 @@
     }
   },
   "definitions": {
+    "Author": {
+      "type": "object",
+      "required": [
+        "authorID",
+        "fullName"
+      ],
+      "properties": {
+        "authorID": {
+          "type": "string",
+          "example": "m600044"
+        },
+        "fullName": {
+          "type": "string",
+          "example": "Steele, Rudd"
+        },
+        "firstName": {
+          "type": "string",
+          "example": "Rudd"
+        },
+        "surName": {
+          "type": "string",
+          "example": "Steele"
+        },
+        "title": {
+          "type": "string",
+          "example": "mr"
+        }
+      }
+    },
+    "Cities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/City"
+      }
+    },
     "City": {
       "type": "object",
       "required": [
@@ -198,7 +241,7 @@
         "lat"
       ],
       "properties": {
-        "id": {
+        "cityID": {
           "type": "integer",
           "format": "int64"
         },
@@ -221,21 +264,44 @@
     "Book": {
       "type": "object",
       "required": [
-        "title",
+        "bookTitle",
         "author"
       ],
       "properties": {
-        "id": {
+        "bookID": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "example": 283428
         },
-        "title": {
+        "bookTitle": {
           "type": "string",
           "example": "Pride and Prejudice"
         },
         "author": {
+          "$ref": "#/definitions/Author"
+        }
+      }
+    },
+    "BookWithCities": {
+      "type": "object",
+      "required": [
+        "bookTitle",
+        "author"
+      ],
+      "properties": {
+        "bookID": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "bookTitle": {
           "type": "string",
-          "example": "Jane Austen"
+          "example": "Pride and Prejudice"
+        },
+        "author": {
+          "$ref": "#/definitions/Author"
+        },
+        "cities": {
+          "$ref": "#/definitions/Cities"
         }
       }
     },
