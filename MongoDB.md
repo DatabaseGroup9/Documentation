@@ -39,7 +39,7 @@ Query   | Description     |  Added index command                      |
 1       | getBooksByCity  | ```db.books.createIndex({"cities.name":1})``` |
 2       | getCitiesByBookTitle  | ```db.books.createIndex({"bookTitle":1})``` |
 3       | getBooksByAuthor      | ```db.books.createIndex({"author.fullName":1})``` |
-4       | getBooksByGeolocation | ```db.books.createIndex({"cities.lat":1},{"cities.lon":1})``` |
+4       | getBooksByGeolocation | ```db.books.createIndex({"cities.lat":1,"cities.lon":1})``` |
 
 #### Difference in performance sample:
 _By profiling the query before and after indexing: (Input data: "Most", not so realistic city but has the highest query result of 33214 books)_
