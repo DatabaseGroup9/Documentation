@@ -1,7 +1,8 @@
 # Documentation
 
 
-```Setup.sql
+```SQL
+setup.sql
 
 
 CREATE TABLE Books(
@@ -46,6 +47,11 @@ FOREIGN KEY (bookID) REFERENCES Books(bookID),
 FOREIGN KEY (cityID) REFERENCES Cities(cityID)
 );
 
-SELECT * FROM `Mentions` JOIN Books ON Mentions.bookID = Books.bookID JOIN Cities ON Mentions.cityID = Cities.cityID JOIN Wrote ON Wrote.bookID = Books.bookID JOIN Authors ON Authors.authorID = Wrote.authorID
 
+```
+
+
+```SQL
+
+SELECT * FROM `Mentions` JOIN Books ON Mentions.bookID = Books.bookID JOIN Cities ON Mentions.cityID = Cities.cityID JOIN Wrote ON Wrote.bookID = Books.bookID JOIN Authors ON Authors.authorID = Wrote.authorID
 ```
