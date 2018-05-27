@@ -47,9 +47,12 @@ FOREIGN KEY (bookID) REFERENCES Books(bookID),
 FOREIGN KEY (cityID) REFERENCES Cities(cityID)
 );
 
+CREATE VIEW BooksTable AS
+SELECT Books.bookID, Books.BookTitle, Cities.cityID, cities.name, cities.lat, cities.lon, Author.authorID, Author.fullName, author.firstName, Author.surName, Author.title FROM `Mentions` JOIN Books ON Mentions.bookID = Books.bookID JOIN Cities ON Mentions.cityID = Cities.cityID JOIN Wrote ON Wrote.bookID = Books.bookID JOIN Authors ON Authors.authorID = Wrote.authorID
 
 ```
 
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-remote-database-to-optimize-site-performance-with-mysql
 
 ```SQL
 
