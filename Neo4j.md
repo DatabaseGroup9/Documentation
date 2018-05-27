@@ -7,8 +7,8 @@ Create a Ubuntu-16.04.4 x64 droplet on DigitalOcean with your SSH keys added.
 
 When created ssh into the droplet and run the follwing command to install Docker:
 
-```wget -O - https://bit.ly/docker-install | bash
-```
+```wget -O - https://bit.ly/docker-install | bash```
+
 
 ```mkdir plugins
    cd plugins
