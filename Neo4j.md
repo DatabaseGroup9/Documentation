@@ -9,13 +9,14 @@ When created ssh into the droplet and run the follwing command to install Docker
 
 ```wget -O - https://bit.ly/docker-install | bash
 ```
+
 ```mkdir plugins
    cd plugins
    echo "Downloading Neo4J-Spatial plugin"
    wget https://github.com/neo4j-contrib/spatial/releases/download/0.25.5-neo4j-3.3.5/neo4j-spatial-0.25.5-neo4j-3.3.5-server-plugin.jar
-   cd .. ```
+   cd .. 
 
-```docker run \
+   docker run \
     -d --name neo4j \
     --rm \
     --publish=7474:7474 \
