@@ -1,4 +1,4 @@
-# Documentation
+# MySQL Documentation
 
 
 ```SQL
