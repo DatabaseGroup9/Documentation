@@ -68,7 +68,8 @@ CREATE (a)-[:AUTHORED]->(b);
 USING PERIODIC COMMIT
 LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/DatabaseGroup9/dataimport/master/data/mentioned_cleaned.csv" AS row
 MATCH (b:Book {bookID: replace(toString(row.bookID), " ", "") }),(c:City {cityID: replace(toString(row.cityID), " ", "")})
-CREATE (b)-[:MENTIONS {mentions: row.count}]->(c);```
+CREATE (b)-[:MENTIONS {mentions: row.count}]->(c);
+```
 
 
 
