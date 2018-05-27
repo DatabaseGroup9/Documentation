@@ -1,5 +1,6 @@
 # Documentation
 
+### Setting up the Neo4J database
 
 Setting up Neo4J with Docker on DigitalOcean 
 
@@ -26,4 +27,9 @@ When created ssh into the droplet and run the follwing command to install Docker
     --env NEO4J_AUTH=neo4j/class \
     neo4j    
 ```
+*class - is the password for logging in.*
+### Importing the data
 
+```http://`[ip-address]:7474/browser/```
+
+Use the password *class* to log in.
