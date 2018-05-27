@@ -54,6 +54,7 @@ MERGE (:City {cityID: row.cityID, name: row.name, location: point({longitude: to
 
 CREATE INDEX ON :Book(bookID)
 CREATE INDEX ON :City(cityID)
+CREATE INDEX ON :Author(authorID)
 
 
 USING PERIODIC COMMIT 
@@ -68,4 +69,18 @@ USING PERIODIC COMMIT
 LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/DatabaseGroup9/dataimport/master/data/mentioned_cleaned.csv" AS row
 MATCH (b:Book {bookID: replace(toString(row.bookID), " ", "") }),(c:City {cityID: replace(toString(row.cityID), " ", "")})
 CREATE (b)-[:MENTIONS {mentions: row.count}]->(c);```
+
+
+
+Useful commands
+
+```MATCH (n) DETACH DELETE n
+CALL db.indexes
+
+DROP INDEX ON :Book(bookID)
+
+MATCH ()-[r:AUTHORED]-() 
+DELETE r
+MATCH ()-[r:WROTE]-() 
+DELETE r```
 
