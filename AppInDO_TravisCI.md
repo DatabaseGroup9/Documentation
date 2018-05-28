@@ -22,7 +22,7 @@ In order to include the tag in your push. No release will be deployed until a pu
 
 ### Getting the newest release
 This command will wget info about the latest release, use jq to extract a download url for the .war file, then wget that:  
-"wget $(wget -qO- https://api.github.com/repos/DatabaseGroup9/ProjectGutenberg_G9/releases/latest | jq -r '.assets[] | select(.name | endswith(".war")) .browser_download_url')"
+```"wget $(wget -qO- https://api.github.com/repos/DatabaseGroup9/ProjectGutenberg_G9/releases/latest | jq -r '.assets[] | select(.name | endswith(".war")) .browser_download_url')"```
 
 ### Automatically replace running webapp with newest
 "/opt/tomcat/temp/getNewest.sh" downloads the newest release and replaces the current 'group9' app.
