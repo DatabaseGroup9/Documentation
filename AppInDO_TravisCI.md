@@ -5,13 +5,13 @@ _Setup:_
 
 Clone this repository [vagrant-for-tomcat](https://github.com/kploesser/vagrant-for-tomcat).
 
-Replace the Vagrant file with [this](https://github.com/DatabaseGroup9/Documentation/blob/master/ApplicationServer/Vagrantfile)
+Replace the Vagrant file with [this](https://github.com/DatabaseGroup9/Documentation/blob/master/ApplicationServer/Vagrantfile)`.
 
 Make sure to update the Vagrant file with the correct DigitalOcean tokenname, token and your ssh keys.
 
 ```vagrant up --provider=digital_ocean```
 
-
+When the vagant script is completed a new Web Server with Tomcat has been installed.
 
 ## Travis CI deployment to Github
 All commits to branch 'master' are automatically built and tested by Travis. If you want to mark a commit as ready for release, call:  
