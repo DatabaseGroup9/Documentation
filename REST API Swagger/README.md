@@ -1,6 +1,13 @@
-Useful links:
 
-Create documentation:
+
+
+### The Application REST API can be found here
+
+[REST API Documentation](http://207.154.232.47:8080/api-doc/)
+
+### How we set up the documentation
+
+Create documentation with swagger.io:
 
 ```https://editor.swagger.io```
 
@@ -17,6 +24,3 @@ Build documentation locally:
 Push to server
 
 ```scp ./*  root@207.154.232.47:/opt/tomcat/webapps/api-doc/```
-
- 
-URL to REST API documentation: http://207.154.232.47:8080/api-doc/
