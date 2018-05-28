@@ -1,7 +1,11 @@
 # Application in Digital Ocean
 _Setup:_
 
-> PLEASE FILL THIS IN.
+## Setting up a Tomcat Server
+
+Clone this repository [vagrant-for-tomcat](https://github.com/kploesser/vagrant-for-tomcat).
+
+Replace the Vagnat file with 
 
 
 
