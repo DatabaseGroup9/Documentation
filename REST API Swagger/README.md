@@ -1,7 +1,8 @@
 
 
+The Application uses a REST API fro the communication between the frontend and the backen.
 
-### The Application REST API can be found here
+### The documentation of the REST API can be found here
 
 [REST API Documentation](http://207.154.232.47:8080/api-doc/)
 
